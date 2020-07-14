@@ -1,0 +1,191 @@
+{
+	"pages": [
+		//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/views/login/login",
+			"style": {}
+		}, 
+		{
+			"path": "pages/views/index/index"
+		},
+		{
+			"path": "pages/views/login/agreement",
+			"style": {}
+		},
+		{
+			"path": "pages/views/login/register",
+			"style": {}
+		},
+		{
+			"path": "pages/views/auth/auth",
+			"style": {}
+		},
+		{
+			"path": "pages/views/auth/persion",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/channelPay",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/playPay",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/lenovoPay",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/qbPay",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/miPay",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/udPay",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/jkPay",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/mzPay",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/iosPay",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/163Pay",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/360Pay",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/mAiqiyi",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/mQm",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/mQy",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/mYk",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/mHollywood",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/mSina",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/sougouReg",
+			"style": {}
+		},
+		{
+			"path": "pages/views/service/ascription",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/notice",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/bill",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/money",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/business",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/money_reg",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/money_withdraw",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/money_unreg",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/deposit",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/deposit_bill",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/deposit_payment",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/deposit_refund",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/account",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/game",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/service",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/channel",
+			"style": {}
+		},
+		{
+			"path": "pages/views/my/password",
+			"style": {}
+		}
+		
+	],
+	"globalStyle": {
+		"mp-alipay": {
+			/* 支付宝小程序特有相关 */
+			"transparentTitle": "always",
+			"allowsBounceVertical": "NO"
+		},
+		"navigationBarBackgroundColor": "#0081ff",
+		"navigationBarTitleText": "游戏久",
+		"navigationStyle": "custom",
+		"navigationBarTextStyle": "black"
+	},
+	"usingComponts": true,
+		"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+				"name": "表单", //模式名称
+				"path": "pages/views/index/index", //启动页面
+				"query": "" //启动参数
+			}
+		]
+	}
+
+}
