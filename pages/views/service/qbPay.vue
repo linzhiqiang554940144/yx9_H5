@@ -149,6 +149,7 @@
 							position: 'center',
 						    title: res.data.message
 						});
+						this.use = false
 						return;
 					}
 				})

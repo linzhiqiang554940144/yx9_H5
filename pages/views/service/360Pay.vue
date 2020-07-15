@@ -66,7 +66,6 @@
 				money:0,
 				use:false,
 				payType:0,
-				account:'',
 				discount:'',
 				postData:{
 					userName:'',
@@ -116,6 +115,7 @@
 							position: 'center',
 						    title: res.data.message
 						});
+						this.use = false
 						return;
 					}
 				})

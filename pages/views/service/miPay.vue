@@ -12,6 +12,7 @@
 		</cu-header>
 		<!-- <view class="pop">
 			<text class="bg-green text-white padding-sm">归属查询</text>
+			
 		</view> -->
 		<!-- start 自动充值 -->
 		<view v-show="tabCur == 0">
@@ -40,9 +41,9 @@
 			</view>
 			
 			<view v-for="(item,index) in checkCardList" class="cu-form-group" :key="index">
-				<view class="title">{{item.name}} x {{item.buyNum}} x {{discount}}</view>
+				<view class="title">{{item.name}} x {{item.buyNum}}</view>
 				<view class="title">{{formatMoney(Number(item.name) * item.buyNum * discount)}}</view>
-				<view>{{item.status}}</view>
+				<view :class="item.status != '成功' ? 'text-red' : ''" @click="lookCard(index)">{{item.status}}</view>
 			</view>
 			
 		</view>
@@ -116,6 +117,23 @@
 			</view>
 		</view>
 		<pay :open="payOpen" :err="errTxt"></pay>
+		<view class="cu-modal" :class="viewOpen ? 'show' : ''">
+			<view class="cu-dialog">
+				<view class="margin-sm">
+					<view class="cu-form-group" v-for="val in thisCard">
+						<view class="text-left">
+							<view><text>卡号:</text><text>{{val.cardNum}}</text></view>
+							<view><text>卡密:</text><text>{{val.pwd}}</text></view>
+						</view>
+						<view class="text-blue" @click="copy(val)">复制</view>
+					</view>
+				</view>
+				<view class="cu-bar bg-white justify-between">
+					<view class="action text-blue flex-sub" @click="hideView">取消</view>
+					<view class="action text-blue flex-sub" @click="copyAll()">一键复制</view>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -148,7 +166,10 @@
 				tMid:'请选择面额',
 				midArr:[],
 				stock:0,
-				midCheck:-1
+				midCheck:-1,
+				showCard:[],
+				thisCard:{},
+				viewOpen:false
 			};
 		},
 		created() {
@@ -193,6 +214,7 @@
 							position: 'center',
 						    title: res.data.message
 						});
+						this.use = false
 						return;
 					}
 				})
@@ -371,7 +393,36 @@
 				}
 				this.totalMoney()
 			},
+			lookCard(e) {
+				if (typeof(this.showCard[e]) != "undefined") {
+					this.thisCard = this.showCard[e]
+					this.viewOpen = true
+				}
+			},
+			copy(e) {
+				uni.setClipboardData({
+				    data: '卡号:' + e.cardNum  + ' 卡密:' + e.pwd + '\r\n',
+				    success: function () {
+				    }
+				})
+			},
+			copyAll() {
+				let data = ""
+				for (let i = 0; i < this.thisCard.length; ++i) {
+					 data += '卡号:' + this.thisCard[i].cardNum  + ' 卡密:' + this.thisCard[i].pwd + '\r\n'
+				}
+				uni.setClipboardData({
+				    data: data,
+				    success: function () {
+				    }
+				})
+			},
+			hideView() {
+				this.thisCard = []
+				this.viewOpen = false
+			},
 			applyTo(e) {
+				this.failCard = []
 				if (this.tabCur == 0) {
 					this.checkCardList.forEach((item, index) => {
 					    setTimeout(() => {
@@ -381,12 +432,13 @@
 								paypwd: e,
 								payway: this.payType+1,
 								recharge: "2",
-								username: this.userName
+								username: index == 0 ? '1' : this.userName
 							}).then(res => {
 								if (res.data.code ==  200) {
 									this.checkCardList[index].status = '充值成功'
 								} else {
 									this.checkCardList[index].status = res.data.message
+									this.showCard[index] = res.data.data
 								}								
 								if (index  == this.checkCardList.length - 1) {
 									uni.$emit("payBack",true)
@@ -404,6 +456,11 @@
 					}).then(res => {
 						if (res.data.code ==  200) {
 							uni.$emit("payBack",true)
+							this.showCard[0] = res.data.data
+							let that = this
+							setTimeout(function () {
+								that.lookCard(0)
+							}, 2000)
 						} else {
 							uni.$emit("payBack",false)
 							this.errTxt = res.data.message

@@ -15,18 +15,9 @@
 			<view class="cu-form-group">
 				<view class="title text-bold">开通时长</view>
 			</view>
-			<view class="cu-form-group">
-				<view class="title"><view class="cu-avatar sm margin-right" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>月卡</view>
-				<view class="title"><checkbox class="round checked" checked="true" value="B"></checkbox></view>
-			</view>
-			<view class="cu-form-group">
-				<view class="title"><view class="cu-avatar sm margin-right" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>季卡</view>
-			</view>
-			<view class="cu-form-group">
-				<view class="title"><view class="cu-avatar sm margin-right" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>半年卡</view>
-			</view>
-			<view class="cu-form-group">
-				<view class="title"><view class="cu-avatar sm margin-right" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>年卡</view>
+			<view class="cu-form-group" @click="selectOne(index)" v-for="(val,index) in cardList" :key="index" >
+				<view class="title"><view class="cu-avatar sm margin-right" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);"></view>{{val}}</view>
+				<view class="title"><checkbox v-show="thisCheck == index"  class="round checked" checked="true"></checkbox></view>
 			</view>
 			<view class="cu-form-group margin-top">
 				<view class="title">充值账号</view>
@@ -96,7 +87,9 @@
 				scrollLeft: 0,
 				tab:['好莱坞会员','好莱坞超级会员'],
 				num:0,
-				payOpen:false
+				cardList:['月卡','季卡','半年卡','年卡'],
+				payOpen:false,
+				thisCheck:0
 			};
 		},
 		created() {
@@ -121,6 +114,9 @@
 						break
 					}
 				}
+			},
+			selectOne(e) {
+				this.thisCheck = e
 			}
 		}
 	}

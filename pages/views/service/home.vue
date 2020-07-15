@@ -33,22 +33,22 @@
 				<view class="recharge">
 					<view class="text-lg text-office">
 						<navigator hover-class='none' :url="'/pages/views/service/miPay'" navigateTo>
-							<image class="cu-avatar lg" src="/static/service/mi.png"></image>米币充值-
+							<image class="cu-avatar lg" src="/static/service/mi.png"></image>米币充值
 						</navigator>
 					</view>
 					<view class="text-lg text-office">
 						<navigator hover-class='none' :url="'/pages/views/service/lenovoPay'" navigateTo>
-							<image class="cu-avatar lg" src="/static/service/lenovo.png"></image>联想充值-
+							<image class="cu-avatar lg" src="/static/service/lenovo.png"></image>联想充值
 						</navigator>
 					</view>
 					<view class="text-lg text-office">
 						<navigator hover-class='none' :url="'/pages/views/service/qbPay'" navigateTo>
-							<image class="cu-avatar lg" src="/static/service/qb.png"></image>Q币充值-
+							<image class="cu-avatar lg" src="/static/service/qb.png"></image>Q币充值
 						</navigator>
 					</view>
 					<view class="text-lg text-office">
 						<navigator hover-class='none' :url="'/pages/views/service/udPay'" navigateTo>
-							<image class="cu-avatar lg" src="/static/service/ud.png"></image>U点充值-
+							<image class="cu-avatar lg" src="/static/service/ud.png"></image>U点充值
 						</navigator>
 					</view>
 					<view class="text-lg text-office">
@@ -73,7 +73,7 @@
 					</view>
 					<view class="text-lg text-office">
 						<navigator hover-class='none' :url="'/pages/views/service/360Pay'" navigateTo>
-							<image class="cu-avatar lg" src="/static/service/360.png"></image>360币充值-
+							<image class="cu-avatar lg" src="/static/service/360.png"></image>360币充值
 						</navigator>
 					</view>
 				</view>
